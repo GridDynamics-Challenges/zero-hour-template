@@ -6,6 +6,28 @@ on:
       - '*'
 
 jobs:
+  tamper_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Detect tampered files
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            tampered:
+              - '.github/workflows/**'
+              - 'best_practices.md'
+              - '.pr_agent.toml'
+              - '**/*test*.py'
+              - '**/*Test.java'
+              - '**/*.test.js'
+      - name: Enforce Protections
+        if: steps.filter.outputs.tampered == 'true'
+        run: |
+          echo "ERROR: You have modified a protected grading or test file. This is not allowed."
+          exit 1
+          
   detect_language:
     runs-on: ubuntu-latest
     outputs:
