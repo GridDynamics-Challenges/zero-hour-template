@@ -1,1 +1,39 @@
+name: Operation Zero Hour - Autograder
 
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  evaluate_correctness:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Log Submission Timestamp
+        run: |
+          echo "Commit Timestamp: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          echo "Evaluating correctness gateway..."
+
+      - name: Set up Environment (Python, Java, Node)
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip install pytest
+      
+      - name: Level 1 Gateway (1.0 Points)
+        run: |
+          echo "Running Level 1 Tests..."
+          pytest Python/Level_1/test_level1.py
+
+      - name: Level 2 Gateway (2.0 Points)
+        run: |
+          echo "Running Level 2 Tests..."
+          pytest Python/Level_2/test_level2.py
+
+      - name: Level 3 Gateway (3.0 Points)
+        run: |
+          echo "Running Level 3 Tests..."
+          pytest Python/Level_3/test_level3.py
