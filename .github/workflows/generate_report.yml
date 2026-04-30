@@ -1,1 +1,36 @@
+name: Generate Final Transparency Report
 
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  create_report_file:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Wait for Qodo Merge (AI Agent) to finish processing
+        run: sleep 45 
+
+      - name: Fetch AI Assessment and Save to File
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "# Final AI Transparency Report" > QUALITY_REPORT.md
+          echo "Generated automatically upon challenge completion." >> QUALITY_REPORT.md
+          echo "" >> QUALITY_REPORT.md
+          
+          # Grabs the last comment made by the AI on the PR
+          gh pr view ${{ github.event.pull_request.number }} --json comments --jq '.comments[-1].body' >> QUALITY_REPORT.md
+          
+      - name: Commit Transparency Report to Repository
+        run: |
+          git config user.name "Grid Dynamics Auto-Grader"
+          git config user.email "grader@griddynamics.com"
+          git add QUALITY_REPORT.md
+          git commit -m "docs: Release final AI quality and transparency report"
+          git push
