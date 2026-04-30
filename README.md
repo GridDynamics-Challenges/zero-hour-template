@@ -1,6 +1,6 @@
-# Grid Dynamics Code Challenges: Operation High Vantage
+# Grid Dynamics Engineering Assessment: Operation High Vantage
 
-Welcome to the first challenge. You have **1.5 hours** to complete it. 
+Welcome to your technical assessment. You have **1.5 hours** to complete this challenge. 
 
 ## The Scenario
 You are building the data processing pipeline for a fleet of high-altitude survey drones. The drones return altitude data as arrays of integers, but the sensors occasionally glitch, recording negative numbers that must be ignored. 
@@ -12,13 +12,23 @@ This is a **progressive** coding challenge. You are expected to build upon and r
 * **Level 2 (Target: 30 mins):** Build upon Level 1. Write `calculateElevationGain(arr)`. This function must take raw drone data, clean it, and calculate the total upward climb (sum of all positive altitude changes between consecutive points).
 * **Level 3 (Target: 45 mins):** The system now receives an array of arrays (multiple drone flight paths). Write `findSteepestPath(matrix)`. Identify and return the specific flight path that has the highest continuous elevation gain. *Your solution must be highly optimized for Time and Space complexity.*
 
-## Instructions
-1.  Navigate into your preferred language folder (`/Python`, `/Java`, or `/JS_TS`).
-2.  Write your code inside the respective `Level_1`, `Level_2`, and `Level_3` directories.
-3.  Commit your code frequently. Our automated test suite will run on every commit.
+---
 
-## Submission
-When you are finished (or when the 1.5-hour timer is up):
-1. Create a new branch called `submission`.
-2. Commit your final code to this branch.
-3. Open a **Pull Request** from `submission` into `main`. **Do not merge it yourself.**
+## How to Write and Test Your Code
+Because you are working in a secure, compute-less web editor (`github.dev`), **you do not have a local terminal.** Instead, you will use GitHub Actions as your automated testing pipeline.
+
+### Step-by-Step Testing Workflow:
+1. **Choose Your Language:** Navigate into your preferred folder (`/Python`, `/Java`, or `/JS_TS`) and write your logic for Level 1.
+2. **Commit Your Code:** Click the "Source Control" icon on the left sidebar, type a commit message, and click **Commit & Push**.
+3. **Open a New Window:** Right-click the hamburger menu (≡) in the top-left corner of the editor and select **"Open link in new window"**. This will open the standard GitHub interface.
+4. **Check Your Tests:** In the new window, click the **Actions** tab. Click on your most recent commit to see the live test logs. The automated grader will show you exactly which unit tests passed or failed.
+5. **Iterate:** Use the taskbar at the bottom of your screen to easily swap back and forth between your code editor window and your test results window. Commit frequently to check your progress!
+
+---
+
+## Final Submission
+When you have completed all three levels (or when the 1.5-hour timer is up):
+1. Ensure all your final code is committed and pushed.
+2. Create a new branch called `submission`.
+3. Open a **Pull Request** from your `submission` branch into `main`. 
+4. **Do not merge the Pull Request yourself.** Leave it open. Our AI Review Agent will automatically grade your PR for modularity and complexity.
