@@ -29,6 +29,7 @@ jobs:
           exit 1
           
   detect_language:
+    needs: tamper_check
     runs-on: ubuntu-latest
     outputs:
       python: ${{ steps.filter.outputs.python }}
