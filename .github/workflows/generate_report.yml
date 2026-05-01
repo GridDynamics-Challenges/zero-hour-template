@@ -5,6 +5,11 @@ on:
     types:
       - closed
 
+permissions:
+  contents: write
+  pull-requests: write
+  issues: read
+
 jobs:
   create_report_file:
     if: github.event.pull_request.merged == true
@@ -12,9 +17,17 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Trigger Custom Qodo Grading
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} -b "/ask You are the automated grading assistant for this assessment. Please read the \`best_practices.md\` file, analyze the commit timestamps in this PR to calculate the duration between levels, and generate the final grade. Your response MUST strictly follow the 'Output Requirements' section at the bottom of the \`best_practices.md\` file. Do not use your standard code review templates."
 
       - name: Wait for Qodo Merge (AI Agent) to finish processing
-        run: sleep 45 
+        run: sleep 135 
 
       - name: Fetch AI Assessment and Save to File
         env:
@@ -24,7 +37,6 @@ jobs:
           echo "Generated automatically upon challenge completion." >> QUALITY_REPORT.md
           echo "" >> QUALITY_REPORT.md
           
-          # Grabs the last comment made by the AI on the PR
           gh pr view ${{ github.event.pull_request.number }} --json comments --jq '.comments[-1].body' >> QUALITY_REPORT.md
           
       - name: Commit Transparency Report to Repository
@@ -33,4 +45,5 @@ jobs:
           git config user.email "grader@griddynamics.com"
           git add QUALITY_REPORT.md
           git commit -m "docs: Release final AI quality and transparency report"
-          git push
+          git pull --rebase origin main 
+          git push origin main
