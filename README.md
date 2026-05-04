@@ -1,7 +1,7 @@
 ## The Scenario
 You are building the data processing pipeline for a fleet of high-altitude survey drones. The drones return altitude data as arrays of integers, but the sensors occasionally glitch, recording negative numbers that must be ignored. 
 
-## The Challenge (3 Levels)
+### The Challenge (3 Levels)
 This is a **progressive** coding challenge. You are expected to build upon and refactor your code as you advance through the levels. **Do not copy-paste monoliths; reuse your functions.**
 
 * **Level 1 (Target: 15 mins):** Write two functions: `cleanData(arr)` to filter out any negative altitude readings, and `findPeak(arr)` to find the highest altitude in the cleaned array.
@@ -26,7 +26,7 @@ For this assessment, you will be using a fully integrated cloud environment call
 
 ---
 
-## Final Submission
+### Final Submission
 When you have completed all three levels (or when the 1.5-hour timer is up):
 1. Ensure all your final code is committed and pushed.
 2. Create a new branch called `submission`.
