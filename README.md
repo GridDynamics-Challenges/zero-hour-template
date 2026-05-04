@@ -1,7 +1,3 @@
-# Grid Dynamics Code Challenge: Operation High Vantage
-
-Welcome to your technical assessment. You have **1.5 hours** to complete this challenge. 
-
 ## The Scenario
 You are building the data processing pipeline for a fleet of high-altitude survey drones. The drones return altitude data as arrays of integers, but the sensors occasionally glitch, recording negative numbers that must be ignored. 
 
