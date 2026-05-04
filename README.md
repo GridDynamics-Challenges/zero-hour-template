@@ -10,15 +10,19 @@ This is a **progressive** coding challenge. You are expected to build upon and r
 
 ---
 
-## How to Write and Test Your Code
-Because you are working in a secure, compute-less web editor (`github.dev`), **you do not have a local terminal.** Instead, you will use GitHub Actions as your automated testing pipeline.
+### How to Write and Test Your Code
+For this assessment, you will be using a fully integrated cloud environment called **GitHub Codespaces**.
 
-### Step-by-Step Testing Workflow:
-1. **Choose Your Language:** Navigate into your preferred folder (`/Python`, `/Java`, or `/JS_TS`) and write your logic for Level 1.
-2. **Commit Your Code:** Click the "Source Control" icon on the left sidebar, type a commit message, and click **Commit & Push**.
-3. **Open a New Window:** Right-click the hamburger menu (≡) in the top-left corner of the editor and select **"Open link in new window"**. This will open the standard GitHub interface.
-4. **Check Your Tests:** In the new window, click the **Actions** tab. Click on your most recent commit to see the live test logs. The automated grader will show you exactly which unit tests passed or failed.
-5. **Iterate:** Use the taskbar at the bottom of your screen to easily swap back and forth between your code editor window and your test results window. Commit frequently to check your progress!
+**How to Start:**
+1. On your repository homepage, click the green **<> Code** button.
+2. Click the **Codespaces** tab.
+3. Click **Create codespace on main**. 
+4. The environment will take about 1-2 minutes to build. Once it loads, you will have a full VS Code editor with a live terminal at the bottom of your screen.
+
+**Your Testing Loop:**
+1. **Code:** Write your logic in your preferred language folder (`/Python`, `/Java`, or `/JS_TS`).
+2. **Test:** Use the integrated terminal at the bottom of the screen to run your tests locally (e.g., `pytest`, `npm test`, or `mvn test`). You do not need to commit your code to see if it works!
+3. **Commit & Push:** Once your tests pass, click the "Source Control" icon on the left sidebar to commit and push your work.
 
 ---
 
