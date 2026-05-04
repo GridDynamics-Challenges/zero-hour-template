@@ -1,4 +1,4 @@
-# Grid Dynamics Engineering Assessment: Operation High Vantage
+# Grid Dynamics Code Challenge: Operation High Vantage
 
 Welcome to your technical assessment. You have **1.5 hours** to complete this challenge. 
 
